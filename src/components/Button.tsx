@@ -1,15 +1,16 @@
+import type { JSX, ReactNode } from "react";
 
 type ButtonProps = {
-    title: string,
-    id?: string,
-    rightIcon?: React.ReactNode,
-    leftIcon?: React.ReactNode,
-    containerClass?: string,
+    title: string;
+    id?: string;
+    rightIcon?: ReactNode;
+    leftIcon?: ReactNode;
+    containerClass?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ title, id, rightIcon, leftIcon, containerClass }) => {
+const Button = ({ title, id, rightIcon, leftIcon, containerClass }: ButtonProps): JSX.Element => {
   return (
-    <button id={id} className={`group relative z-10 wfit cursor-pointer overflow-hidden rounded-full bg-violet-50
+    <button id={id} className={`group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-violet-50
     px-7 py-3 text-black ${containerClass}` }>
         {leftIcon}
 
@@ -20,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({ title, id, rightIcon, leftIcon, contain
         </span>
         {rightIcon}
     </button>
-  )
+  );
 }
 
 export default Button

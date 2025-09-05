@@ -1,13 +1,13 @@
 import gsap from 'gsap'
-import React from 'react'
-import AnimatedTitle from './AnimatedTitle.tsx'
+import AnimatedTitle from './AnimatedTitle'
 import { useGSAP } from '@gsap/react'
 
-import { ScrollTrigger } from 'gsap/all'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import type { JSX } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const About:React.FC = () => {
+const About:React.FC = (): JSX.Element => {
 
  useGSAP(() => {
     const clipAnimation = gsap.timeline({
@@ -18,14 +18,14 @@ const About:React.FC = () => {
             scrub: 0.5,
             pin: true,
             pinSpacing: true,
-        }
-    });
+        },
+    })
 
     clipAnimation.to('.mask-clip-path', {
         width: '100vw',
         height: '100vh',
         borderRadius: 0,
-    });
+    })
  })
 
   return (

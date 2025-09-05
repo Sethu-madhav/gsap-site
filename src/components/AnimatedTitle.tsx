@@ -1,14 +1,17 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef, type JSX } from 'react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+
+gsap.registerPlugin(ScrollTrigger)
 
 type AnimatedTitleProps = {
   title: string,
   containerClass: string
 }
 
-const AnimatedTitle: React.FC<AnimatedTitleProps> = ({ title, containerClass }) => {
+const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps): JSX.Element => {
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context( () => {
