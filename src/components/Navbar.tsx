@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState, type JSX } from 'react'
+import { useEffect, useRef, useState, type JSX } from 'react'
 import { TiLocationArrow } from 'react-icons/ti';
 import { useWindowScroll } from 'react-use';
 import Button from './Button';
@@ -34,6 +34,9 @@ const Navbar = (): JSX.Element => {
   }, [currentScrollY])
 
   useEffect(() => {
+    const navContainer = navContainerRef.current;
+    if(!navContainer) return;
+
     gsap.to(navContainerRef.current, {
         y: isNavVisible ? 0 : -100,
         opacity: isNavVisible ? 1 : 0,
@@ -41,7 +44,7 @@ const Navbar = (): JSX.Element => {
     })
   }, [isNavVisible]);
 
-  const toggleAudioIndicator = () => {
+  const toggleAudioIndicator = (): void => {
     setIsAudioPlaying((prev) => !prev);
     setIsIndicatorActive((prev) => !prev);
   }
@@ -51,7 +54,7 @@ const Navbar = (): JSX.Element => {
     if(!audio) return;
     
     if(isAudioPlaying) {
-        audio.play();
+       void audio.play();
     } else {
         audio.pause();
     }
