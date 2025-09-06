@@ -24,8 +24,8 @@ const BentoTilt = ({ children, className = ''}: BentoTiltProps): JSX.Element => 
         const relativeX = (e.clientX - left) / width; // relative position of the mouse to our card
         const relativeY = (e.clientY - top) / height;
 
-        const tiltX = (relativeY - 0.5) * 10;
-        const tiltY = (relativeX - 0.5) * -10;
+        const tiltX = (relativeY - 0.5) * 7;
+        const tiltY = (relativeX - 0.5) * -7;
 
         const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(0.98, 0.98, 0.98)`;
 
@@ -33,7 +33,9 @@ const BentoTilt = ({ children, className = ''}: BentoTiltProps): JSX.Element => 
     };
 
     const handleMouseLeave = () => {
-        setTransformStyle('');
+        setTransformStyle(`transform 320ms cubic-bezier(0.22, 1, 0.36, 1)`);
+        const resetTransform = `perspective(700px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        setTransformStyle(resetTransform);
     };
 
     return(
